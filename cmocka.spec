@@ -4,7 +4,7 @@ BuildRequires:  glibc-devel
 
 Name:           cmocka
 Version:        0.2.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 
 License:        ASL 2.0
 Group:          Development/Tools
@@ -125,6 +125,9 @@ popd
 %{_libdir}/libcmocka.so
 
 %changelog
+* Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Fri Jan 18 2013 - Andreas Schneider <asn@redhat.com> - 0.2.0-3
 - Fixed typo in Source URL.
 
