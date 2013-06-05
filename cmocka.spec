@@ -3,8 +3,8 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        0.2.0
-Release:        4%{?dist}
+Version:        0.3.0
+Release:        1%{?dist}
 
 License:        ASL 2.0
 Group:          Development/Tools
@@ -123,8 +123,12 @@ popd
 %defattr(-,root,root)
 %{_includedir}/cmocka.h
 %{_libdir}/libcmocka.so
+%{_libdir}/pkgconfig/cmocka.pc
 
 %changelog
+* Wed Jun 05 2013 - Andreas Schneider <asn@redhat.com> - 0.3.0-1
+- Update to version 0.3.0.
+
 * Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
