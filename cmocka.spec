@@ -3,7 +3,7 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        0.3.0
+Version:        0.3.1
 Release:        1%{?dist}
 
 License:        ASL 2.0
@@ -126,6 +126,11 @@ popd
 %{_libdir}/pkgconfig/cmocka.pc
 
 %changelog
+* Wed Jul 10 2013 - Andreas Schneider <asn@redhat.com> - 0.3.0-2
+- Update to version 0.3.1.
+- Fixed cmocka issues on big endian.
+- resolves: #975044
+
 * Wed Jun 05 2013 - Andreas Schneider <asn@redhat.com> - 0.3.0-1
 - Update to version 0.3.0.
 
