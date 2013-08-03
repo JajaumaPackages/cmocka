@@ -4,7 +4,7 @@ BuildRequires:  glibc-devel
 
 Name:           cmocka
 Version:        0.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 License:        ASL 2.0
 Group:          Development/Tools
@@ -126,6 +126,9 @@ popd
 %{_libdir}/pkgconfig/cmocka.pc
 
 %changelog
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Wed Jul 10 2013 - Andreas Schneider <asn@redhat.com> - 0.3.0-2
 - Update to version 0.3.1.
 - Fixed cmocka issues on big endian.
