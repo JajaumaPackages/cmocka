@@ -3,15 +3,15 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        0.3.1
-Release:        2%{?dist}
+Version:        0.3.2
+Release:        1%{?dist}
 
 License:        ASL 2.0
 Group:          Development/Tools
 Summary:        Lightweight library to simplify and generalize unit tests for C
-Url:            http://cmocka.cryptomilk.org/
+Url:            http://cmocka.org
 
-Source0:        https://open.cryptomilk.org/attachments/download/7/%{name}-%{version}.tar.gz
+Source0:        https://open.cryptomilk.org/attachments/download/32/%{name}-%{version}.tar.xz
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
@@ -81,20 +81,21 @@ Development headers for the cmocka unit testing library.
 %setup -q
 
 %build
-if test ! -e "build"; then
-  mkdir build
+if test ! -e "obj"; then
+  mkdir obj
 fi
-pushd build
+pushd obj
 %cmake \
   -DWITH_STATIC_LIB=ON \
   -DUNIT_TESTING=ON \
   %{_builddir}/%{name}-%{version}
 
 make %{?_smp_mflags} VERBOSE=1
-popd build
+make doc
+popd
 
 %install
-pushd build
+pushd obj
 make DESTDIR=%{buildroot} install
 popd
 
@@ -106,26 +107,28 @@ popd
 %{__rm} -rf %{buildroot}
 
 %check
-pushd build
+pushd obj
 make test
 popd
 
 %files -n libcmocka
-%defattr(-,root,root)
 %doc AUTHORS README ChangeLog COPYING
 %{_libdir}/libcmocka.so.*
 
 %files -n libcmocka-static
-%defattr(-,root,root)
 %{_libdir}/libcmocka.a
 
 %files -n libcmocka-devel
-%defattr(-,root,root)
+%doc obj/doc/html
 %{_includedir}/cmocka.h
 %{_libdir}/libcmocka.so
 %{_libdir}/pkgconfig/cmocka.pc
 
 %changelog
+* Wed Nov 06 2013 - Andreas Schneider <asn@redhat.com> - 0.3.2-1
+- Update to version 0.3.2.
+- Include API documentation.
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
