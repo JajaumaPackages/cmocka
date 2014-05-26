@@ -3,7 +3,7 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        0.4.0
+Version:        0.4.1
 Release:        1%{?dist}
 
 License:        ASL 2.0
@@ -123,10 +123,13 @@ popd
 %{_includedir}/cmocka.h
 %{_libdir}/libcmocka.so
 %{_libdir}/pkgconfig/cmocka.pc
-%{_libdir}/cmake/cmocka-config-version.cmake
-%{_libdir}/cmake/cmocka-config.cmake
+%{_libdir}/cmake/cmocka/cmocka-config-version.cmake
+%{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Mon May 26 2014 - Andreas Schneider <asn@redhat.com> - 0.4.1-1
+- Update to version 0.4.1.
+
 * Fri Apr 11 2014 - Andreas Schneider <asn@redhat.com> - 0.4.0-1
 - Update to version 0.4.0.
 
