@@ -4,7 +4,7 @@ BuildRequires:  glibc-devel
 
 Name:           cmocka
 Version:        0.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 License:        ASL 2.0
 Group:          Development/Tools
@@ -127,6 +127,9 @@ popd
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Mon May 26 2014 - Andreas Schneider <asn@redhat.com> - 0.4.1-1
 - Update to version 0.4.1.
 
