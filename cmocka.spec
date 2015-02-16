@@ -3,15 +3,15 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        0.4.1
-Release:        3%{?dist}
+Version:        1.0.0
+Release:        1%{?dist}
 
 License:        ASL 2.0
 Group:          Development/Tools
 Summary:        Lightweight library to simplify and generalize unit tests for C
 Url:            http://cmocka.org
 
-Source0:        https://open.cryptomilk.org/attachments/download/32/%{name}-%{version}.tar.xz
+Source0:        https://open.cryptomilk.org/attachments/download/54/%{name}-%{version}.tar.xz
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
@@ -39,6 +39,8 @@ This is the successor of Google's Cmockery.
 %package -n libcmocka
 Group:          Development/Libraries
 Summary:        Lightweight library to simplify and generalize unit tests for C
+
+Conflicts: cmockery2
 
 %description -n libcmocka
 There are a variety of C unit testing frameworks available however many of them
@@ -74,6 +76,8 @@ Group:          Development/Libraries
 Summary:        Development headers for the cmocka library
 Requires:       libcmocka = %{version}-%{release}
 
+Conflicts: cmockery2-devel
+
 %description -n libcmocka-devel
 Development headers for the cmocka unit testing library.
 
@@ -87,6 +91,7 @@ fi
 pushd obj
 %cmake \
   -DWITH_STATIC_LIB=ON \
+  -DWITH_CMOCKERY_SUPPORT=ON \
   -DUNIT_TESTING=ON \
   %{_builddir}/%{name}-%{version}
 
@@ -98,6 +103,7 @@ popd
 pushd obj
 make DESTDIR=%{buildroot} install
 popd
+ln -s libcmocka.so %{buildroot}%{_libdir}/libcmockery.so
 
 %post -n libcmocka -p /sbin/ldconfig
 
@@ -121,12 +127,28 @@ popd
 %files -n libcmocka-devel
 %doc obj/doc/html
 %{_includedir}/cmocka.h
+%{_includedir}/cmocka_pbc.h
+%{_includedir}/cmockery/cmockery.h
+%{_includedir}/cmockery/pbc.h
 %{_libdir}/libcmocka.so
+%{_libdir}/libcmockery.so
 %{_libdir}/pkgconfig/cmocka.pc
 %{_libdir}/cmake/cmocka/cmocka-config-version.cmake
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Mon Feb 16 2015 Andreas Schneider <asn@redhat.com> - 1.0.0-1
+- Update to version 1.0.0:
+  * Added new test runner with group fixtures. The old runner is deprecated
+  * Added an extensible message output formatter
+  * Added jUnit XML message output
+  * Added subunit message output
+  * Added Test Anything Protocol message output
+  * Added skip() command
+  * Added test_realloc()
+  * Added a cmockery compat header
+  * Fixed a lot of bugs on Windows
+
 * Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
