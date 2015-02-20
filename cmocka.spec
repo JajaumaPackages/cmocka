@@ -12,6 +12,7 @@ Summary:        Lightweight library to simplify and generalize unit tests for C
 Url:            http://cmocka.org
 
 Source0:        https://open.cryptomilk.org/attachments/download/54/%{name}-%{version}.tar.xz
+Patch0:         cmocka-1.0.0-fix_build_with_newer_gcc.patch
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
@@ -83,6 +84,8 @@ Development headers for the cmocka unit testing library.
 
 %prep
 %setup -q
+
+%patch0 -p1 -b .cmocka-1.0.0-fix_build_with_newer_gcc.patch
 
 %build
 if test ! -e "obj"; then
