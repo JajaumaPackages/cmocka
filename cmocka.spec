@@ -114,7 +114,7 @@ ln -s libcmocka.so %{buildroot}%{_libdir}/libcmockery.so
 
 %check
 pushd obj
-make test
+make test || cat Testing/Temporary/LastTest.log
 popd
 
 %files -n libcmocka
