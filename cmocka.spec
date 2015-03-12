@@ -3,7 +3,7 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        1.0.0
+Version:        1.0.1
 Release:        1%{?dist}
 
 License:        ASL 2.0
@@ -12,7 +12,6 @@ Summary:        Lightweight library to simplify and generalize unit tests for C
 Url:            http://cmocka.org
 
 Source0:        https://open.cryptomilk.org/attachments/download/54/%{name}-%{version}.tar.xz
-Patch0:         cmocka-1.0.0-fix_build_with_newer_gcc.patch
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
@@ -85,8 +84,6 @@ Development headers for the cmocka unit testing library.
 %prep
 %setup -q
 
-%patch0 -p1 -b .cmocka-1.0.0-fix_build_with_newer_gcc.patch
-
 %build
 if test ! -e "obj"; then
   mkdir obj
@@ -140,6 +137,13 @@ popd
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Thu Mar 12 2015 Andreas Schneider <asn@redhat.com> - 1.0.1-1
+- Update to version 1.0.1:
+  * Added a macro for assert_ptr_equal().
+  * Fixed test_realloc() if 0 size is passed.
+  * Fixed objects packaging bug.
+  * Fixed building with newer gcc versions.
+
 * Mon Feb 16 2015 Andreas Schneider <asn@redhat.com> - 1.0.0-1
 - Update to version 1.0.0:
   * Added new test runner with group fixtures. The old runner is deprecated
