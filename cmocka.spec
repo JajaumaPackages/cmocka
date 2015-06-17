@@ -4,7 +4,7 @@ BuildRequires:  glibc-devel
 
 Name:           cmocka
 Version:        1.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 License:        ASL 2.0
 Group:          Development/Tools
@@ -137,6 +137,9 @@ popd
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Thu Mar 12 2015 Andreas Schneider <asn@redhat.com> - 1.0.1-1
 - Update to version 1.0.1:
   * Added a macro for assert_ptr_equal().
