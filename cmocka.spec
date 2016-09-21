@@ -3,7 +3,7 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        1.0.1
+Version:        1.1.0
 Release:        3%{?dist}
 
 License:        ASL 2.0
@@ -11,7 +11,7 @@ Group:          Development/Tools
 Summary:        Lightweight library to simplify and generalize unit tests for C
 Url:            http://cmocka.org
 
-Source0:        https://open.cryptomilk.org/attachments/download/54/%{name}-%{version}.tar.xz
+Source0:        https://open.cryptomilk.org/attachments/download/60/%{name}-%{version}.tar.xz
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
@@ -137,6 +137,18 @@ popd
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Wed Sep 21 2016 Jakub Hrozek <jhrozek@redhat.com> - 1.1.0-1
+- Update to version 1.1.0
+    * Added support to catch multiple exceptions
+    * Added support to verify call ordering
+    * Added support to pass initial data to test cases
+    * Added will_return_maybe() for ignoring mock returns
+    * Added subtests for groups using TAP output
+    * Added support to write multiple XML files for groups
+    * Improved documentation
+    * Fixed XML output generataion
+    * Fixed Windows builds with VS2015
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.0.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
