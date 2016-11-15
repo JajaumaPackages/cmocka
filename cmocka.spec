@@ -7,12 +7,10 @@ Version:        1.1.0
 Release:        3%{?dist}
 
 License:        ASL 2.0
-Group:          Development/Tools
 Summary:        Lightweight library to simplify and generalize unit tests for C
 Url:            http://cmocka.org
 
 Source0:        https://open.cryptomilk.org/attachments/download/60/%{name}-%{version}.tar.xz
-BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
 There are a variety of C unit testing frameworks available however many of them
@@ -37,7 +35,6 @@ preferable.
 This is the successor of Google's Cmockery.
 
 %package -n libcmocka
-Group:          Development/Libraries
 Summary:        Lightweight library to simplify and generalize unit tests for C
 
 Conflicts: cmockery2
@@ -65,14 +62,12 @@ preferable.
 This is the successor of Google's Cmockery.
 
 %package -n libcmocka-static
-Group:          Development/Libraries
 Summary:        Lightweight library to simplify and generalize unit tests for C
 
 %description -n libcmocka-static
 Static version of the cmocka library.
 
 %package -n libcmocka-devel
-Group:          Development/Libraries
 Summary:        Development headers for the cmocka library
 Requires:       libcmocka = %{version}-%{release}
 
