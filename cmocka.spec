@@ -4,13 +4,17 @@ BuildRequires:  glibc-devel
 
 Name:           cmocka
 Version:        1.1.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 
 License:        ASL 2.0
 Summary:        Lightweight library to simplify and generalize unit tests for C
 Url:            http://cmocka.org
 
 Source0:        https://open.cryptomilk.org/attachments/download/60/%{name}-%{version}.tar.xz
+
+# add workaround for gcc7 on ppc64le temporary before it's fixed in gcc
+# https://bugzilla.redhat.com/show_bug.cgi?id=1420350
+Patch1:         cmocka-1.1.0-workaround-ppc64le-gcc.patch
 
 %description
 There are a variety of C unit testing frameworks available however many of them
@@ -79,6 +83,10 @@ Development headers for the cmocka unit testing library.
 %prep
 %setup -q
 
+%ifarch ppc64le
+%patch1 -p1 -b .workaround-ppc64le-gcc
+%endif
+
 %build
 if test ! -e "obj"; then
   mkdir obj
@@ -132,6 +140,9 @@ popd
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Tue Mar 28 2017 Than Ngo <than@redhat.com> - 1.1.0-5
+- added workaround for gcc7 bug on ppc64le temporary 
+
 * Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
