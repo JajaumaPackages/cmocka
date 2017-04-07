@@ -3,7 +3,7 @@ BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 
 Name:           cmocka
-Version:        1.1.0
+Version:        1.1.1
 Release:        5%{?dist}
 
 License:        ASL 2.0
