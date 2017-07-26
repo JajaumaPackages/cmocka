@@ -4,7 +4,7 @@ BuildRequires:  glibc-devel
 
 Name:           cmocka
 Version:        1.1.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 
 License:        ASL 2.0
 Summary:        Lightweight library to simplify and generalize unit tests for C
@@ -140,6 +140,9 @@ popd
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
 
 %changelog
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Tue Mar 28 2017 Than Ngo <than@redhat.com> - 1.1.0-5
 - added workaround for gcc7 bug on ppc64le temporary 
 
